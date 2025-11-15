@@ -21,7 +21,7 @@ local function createSubscribePopup()
 	frame.Active = true
 	frame.Draggable = true
 	frame.Parent = screenGui
-	Instance.new("UICorner", frame).CornerRadius = UDim.new(0, 0.1)
+	Instance.new("UICorner", frame).CornerRadius = UDim.new(0, 0.2)
 
 	local targetSize = UDim2.new(0, 320, 0, 260)
 	local targetPosition = UDim2.new(0.5, 0, 0.5, 0)
