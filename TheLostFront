@@ -1,7 +1,10 @@
 local Players = game:GetService("Players")
 local StarterGui = game:GetService("StarterGui")
 local TweenService = game:GetService("TweenService")
+local UserInputService = game:GetService("UserInputService")
+
 local player = Players.LocalPlayer
+local mouse = player:GetMouse()
 
 local YOUTUBE_LINK = "https://www.youtube.com/@ZenwareScript"
 local DISCORD_LINK = "https://discord.gg/JFpzR7Cv"
@@ -11,6 +14,9 @@ local function createSubscribePopup()
 	screenGui.Name = "SubscribePopup"
 	screenGui.ResetOnSpawn = false
 	screenGui.Parent = player:WaitForChild("PlayerGui")
+
+	
+	UserInputService.MouseBehavior = Enum.MouseBehavior.Default
 
 	local frame = Instance.new("Frame")
 	frame.Size = UDim2.new(0, 0, 0, 0)
@@ -23,10 +29,17 @@ local function createSubscribePopup()
 	frame.Parent = screenGui
 	Instance.new("UICorner", frame).CornerRadius = UDim.new(0, 0.15)
 
+	
+	local modalFix = Instance.new("TextButton")
+	modalFix.Size = UDim2.new(0, 0, 0, 0)
+	modalFix.BackgroundTransparency = 1
+	modalFix.Text = ""
+	modalFix.Modal = true
+	modalFix.Parent = frame
+
 	local targetSize = UDim2.new(0, 320, 0, 260)
-	local targetPosition = UDim2.new(0.5, 0, 0.5, 0)
 	local tweenInfo = TweenInfo.new(0.4, Enum.EasingStyle.Back, Enum.EasingDirection.Out)
-	TweenService:Create(frame, tweenInfo, {Size = targetSize, Position = targetPosition}):Play()
+	TweenService:Create(frame, tweenInfo, {Size = targetSize}):Play()
 
 	local function createLabel(text, positionY)
 		local label = Instance.new("TextLabel")
@@ -41,8 +54,8 @@ local function createSubscribePopup()
 		return label
 	end
 
-	local header = createLabel("Before you enter the script", 10)
-	local title = createLabel("Would you consider subscribing?", 45)
+	createLabel("Before you enter the script", 10)
+	createLabel("Would you consider subscribing?", 45)
 
 	local closeButton = Instance.new("TextButton")
 	closeButton.Text = "x"
@@ -83,6 +96,7 @@ local function createSubscribePopup()
 
 	local function closePopup()
 		screenGui:Destroy()
+		UserInputService.MouseBehavior = Enum.MouseBehavior.LockCenter 
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/larsscriptz/Scripts/refs/heads/main/Loadstring", true))()
 	end
 
