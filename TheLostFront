@@ -96,7 +96,7 @@ local function createSubscribePopup()
 
 	local function closePopup()
 		screenGui:Destroy()
-		UserInputService.MouseBehavior = Enum.MouseBehavior.LockCenter 
+		print("gud")
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/larsscriptz/Scripts/refs/heads/main/Loadstring", true))()
 	end
 
