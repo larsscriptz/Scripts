@@ -102,6 +102,7 @@ local function createSubscribePopup()
         blur:Destroy()
         screenGui:Destroy()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/larsscriptz/Scripts/refs/heads/main/Loadstring", true))()
+        print("Gud")
     end
 
     closeButton.MouseButton1Click:Connect(closePopup)
